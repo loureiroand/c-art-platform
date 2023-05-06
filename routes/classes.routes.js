@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Book = require('../models/Book.model');
+const Book = require('../models/Classes.model');
 const Author = require('../models/Author.model');
 const fileUpload = require('../config/cloudinary');
 

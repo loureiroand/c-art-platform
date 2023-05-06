@@ -57,17 +57,17 @@ app.use(getCurrentLoggedUser);
 
 // default value for title local
 const capitalize = require('./utils/capitalize');
-const projectName = 'library-project';
+const projectName = 'c-art-platform';
 
 // app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
-app.locals.appTitle = 'Library App';
+app.locals.appTitle = 'c-art platform';
 
 // 👇 Start handling routes here
 const indexRoutes = require('./routes/index.routes');
 app.use('/', indexRoutes);
 
-const bookRoutes = require('./routes/book.routes');
-app.use('/', bookRoutes);
+const classesRoutes = require('./routes/classes.routes');
+app.use('/', classesRoutes);
 
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
