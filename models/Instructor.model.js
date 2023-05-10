@@ -1,29 +1,31 @@
 const { Schema, model, default: mongoose } = require('mongoose');
 
-const instrauctorSchema = new Schema({
-  first_name: {
-    type: String
-  },
-  last_name: {
-    type: String
-  },
+const instructorSchema = new Schema({
+  first_name: String,
+  last_name: String,
   address: [
     {
       country: String,
       city: String
     }
   ],
-  username: {
-    type: String
-  },
-  classes: [
+  username: String,
+  email: String,
+
+  courses: [
     {
-      class_id: { type: [mongoose.Schema.Types.ObjectId] },
-      class_title: { type: String }
+      course_id: { type: [mongoose.Schema.Types.ObjectId] },
+      course_title: { type: String }
     }
   ]
 });
 
-const instructorModel = model('Instructor', instructorSchema);
+const Instructor = model('Instructor', instructorSchema);
 
-module.exports = instructorModel;
+module.exports = Instructor;
+
+const userInstructor = await userInstructor.findOne({ username });
+if (userInstructor !== null) {
+  res.render('auth/signup', { errorMessage: 'Username already exists' });
+  return;
+}

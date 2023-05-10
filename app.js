@@ -66,11 +66,14 @@ app.locals.appTitle = 'c-art platform';
 const indexRoutes = require('./routes/index.routes');
 app.use('/', indexRoutes);
 
-const classesRoutes = require('./routes/classes.routes');
-app.use('/', classesRoutes);
+// const usersRoutes = require('./routes/users.routes');
+// app.use('/', usersRoutes);
 
-const authRoutes = require('./routes/auth.routes');
-app.use('/', authRoutes);
+const coursesRoutes = require('./routes/courses.routes');
+app.use('/', coursesRoutes);
+
+// const authRoutes = require('./routes/auth.routes');
+// app.use('/', authRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

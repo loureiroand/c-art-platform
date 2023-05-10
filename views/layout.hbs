@@ -14,14 +14,30 @@
       <p>Welcome {{currentUser.username}}</p>
     {{/if}}
 
-    <a href='/books'>All Books</a>
-    <a href='/books/create'>Create books</a>
-    <a href='/signup'>Signup</a>
-    <a href='/login'>Login</a>
+    <ul>
+      <li>
+        <a href='Home'></a></li>
+      <li>
+        <a href='Courses'></a>
+      </li>
+    </ul>
+
+
+<div>
+{{>login}}
+</div>
+    
 
     <form action='/logout' method='POST'>
       <button type='submit'>Logout</button>
     </form>
+
+    <h3>Welcome to C-Art</h3>
+    <hr>
+
+<div>
+{{>courses}}
+</div>
 
     {{{body}}}
 
