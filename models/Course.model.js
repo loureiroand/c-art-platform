@@ -22,11 +22,3 @@ const courseSchema = new Schema(
 const Course = model('Course', courseSchema);
 
 module.exports = Course;
-
-module.exports.getCourses = (callback, limit) => {
-  Class.find(callback).limit(limit);
-};
-
-module.exports.getCourseById = (id, callback) => {
-  Course.findById(id, callback);
-};

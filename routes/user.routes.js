@@ -2,25 +2,20 @@ const router = require('express').Router();
 const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
   res.render('auth/signup');
 });
 
 router.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, accountType } = req.body;
 
   if (username === '' || email === '' || password === '') {
-    res.render('auth/signup', { errorMessage: 'Fill in all the fields' });
+    res.render('auth/signup', { errorMessage: 'Fill in all fields' });
     return;
   }
 
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (regex.test(password) === false) {
-    res.render('auth/signup', { errorMessage: 'Password is too weak' });
-  }
-
-  const user = await User.findOne({ username });
-  if (user !== null) {
+  const existingUser = await User.findOne({ username });
+  if (existingUser) {
     res.render('auth/signup', { errorMessage: 'Username already exists' });
     return;
   }
@@ -29,46 +24,68 @@ router.post('/signup', async (req, res) => {
   const salt = bcrypt.genSaltSync(saltRounds);
   const hashedPassword = bcrypt.hashSync(password, salt);
 
-  await User.create({
-    username,
-    email,
-    password: hashedPassword
-  });
-  res.redirect('/');
+  let user;
+  if (accountType === 'isStudent') {
+    user = new User({
+      username,
+      email,
+      password: hashedPassword,
+      accountType: {
+        isStudent: true,
+        isInstructor: false
+      }
+    });
+  } else if (accountType === 'isInstructor') {
+    user = new User({
+      username,
+      email,
+      password: hashedPassword,
+      accountType: {
+        isStudent: false,
+        isInstructor: true
+      }
+    });
+  }
+
+  try {
+    await user.save(); // Save the user to the database
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.render('auth/signup', { errorMessage: 'Failed to create user' });
+  }
 });
 
-router.get('/login', (req, res) => {
-  res.render('/login');
+router.get('/login', async (req, res) => {
+  res.render('auth/login');
 });
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    res.render('/login', { errorMessage: 'invalid login' });
-    return;
-  }
-  const user = await User.findOne({ username });
-  if (!username) {
-    res.render('auth/login', { errorMessage: 'invalid login' });
-    return;
-  }
-
-  //Check password
-  if (bcrypt.compareSync(password, user.password)) {
-    //passwords match
-    req.session.currentUser = user;
-    res.redirect('/');
-  } else {
-    //Passwwords do not match
     res.render('auth/login', { errorMessage: 'Invalid login' });
     return;
   }
-});
 
-router.post('/logout', (req, res) => {
-  req.session.destroy();
-  res.redirect('/');
+  const user = await User.findOne({ username });
+
+  if (!user) {
+    res.render('auth/login', { errorMessage: 'Invalid login' });
+    return;
+  }
+
+  // Check for password
+  if (bcrypt.compareSync(password, user.password)) {
+    // Passwords match
+    req.session.currentUser = user;
+    console.log(req.session.currentUser);
+    res.redirect('/');
+  } else {
+    // Passwords don't match
+    res.render('auth/login', { errorMessage: 'Invalid login' });
+    return;
+  }
 });
 
 module.exports = router;

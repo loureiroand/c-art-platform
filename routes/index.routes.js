@@ -6,7 +6,7 @@ const Course = require('../models/Course.model');
 /* GET home page */
 router.get('/', async (req, res, next) => {
   try {
-    const courses = await Course.findById(3);
+    const courses = await Course.find().limit(3);
     res.render('index', { courses });
   } catch (err) {
     next(err);

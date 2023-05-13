@@ -2,6 +2,24 @@
 
 <form action='/signup' method='POST'>
 
+  <label for='isStudent'>Account Type: </label>
+  <input
+    type='radio'
+    id='isStudent'
+    name='accountType'
+    value='isStudent'
+    checked
+  />
+  <label for='isStudent'>Student</label>
+
+  <input
+    type='radio'
+    id='isInstructor'
+    name='accountType'
+    value='isInstructor'
+  />
+  <label for='isInstructor'>Instructor</label>
+
   <label>Username</label>
   <input type="'text" name='username' />
 

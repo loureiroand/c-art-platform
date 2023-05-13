@@ -1,9 +1,11 @@
-<h3>Latest Courses</h3>
-
 {{#each courses}}
-
-  <h4>{{title}}</h4>
-  <p>{{description}}</p>
-  <a href='/courses/{{_id}}/details'>View Course</a>
-
+  <div class='col-lg-4 col-md-6'>
+    <div class='card mb-4'>
+      <div class='card-body'>
+        <h4 class='card-title'>{{title}}</h4>
+        <p class='card-text'>{{description}}</p>
+        <a href='/courses/{{_id}}/details' class='btn btn-primary'>View Course</a>
+      </div>
+    </div>
+  </div>
 {{/each}}

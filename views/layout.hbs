@@ -1,47 +1,52 @@
-<html lang='en'>
-
+<html>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-    <title>{{appTitle}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>c-art platform</title>
+    <!-- Add your CSS and other stylesheets here -->
+    <link rel='stylesheet' href='/styles/main.css' />
   </head>
-
   <body>
 
-    {{#if currentUser}}
-      <p>Welcome {{currentUser.username}}</p>
-    {{/if}}
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class='menu'>
+        <li><a href='/signup'>Signup</a></li>
+        <li><a href='/login'>Login</a></li>
+        <li><a href='/courses'>Courses</a></li>
+      </ul>
+    </nav>
 
-    <ul>
-      <li>
-        <a href='Home'></a></li>
-      <li>
-        <a href='Courses'></a>
-      </li>
-    </ul>
+    <!-- Content Section -->
+    <div class='content'>
+      {{{body}}}
+      <!-- This is where the content from specific views will be injected -->
+    </div>
 
+    <!-- Course Types Section -->
+    <div class='course-types'>
+      <ul>
+        <li>
+          <a href='/courses/music'>Music</a>
+          <button><a href='/courses/music'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/film-video'>Film & Video</a>
+          <button><a href='/courses/film-video'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/visual-arts'>Visual Arts</a>
+          <button><a href='/courses/visual-arts'>View Courses</a></button>
+        </li>
+      </ul>
+    </div>
 
-<div>
-{{>login}}
-</div>
-    
+    {{!--   {{> login}}
+    {{> courses}} --}}
 
-    <form action='/logout' method='POST'>
-      <button type='submit'>Logout</button>
-    </form>
+    <footer>
+      <!-- Add your footer content here -->
+    </footer>
 
-    <h3>Welcome to C-Art</h3>
-    <hr>
-
-<div>
-{{>courses}}
-</div>
-
-    {{{body}}}
-
+    <!-- Add your scripts and JavaScript files here -->
     <script src='/js/script.js'></script>
   </body>
-
 </html>
