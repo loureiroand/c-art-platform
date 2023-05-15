@@ -1,0 +1,57 @@
+<h1>Welcome to the Instructor Dashboard</h1>
+
+<nav>
+  <ul>
+    <li><a href='/logout'>Logout</a></li>
+  </ul>
+</nav>
+
+<h2>Course List:</h2>
+{{#if courses.length}}
+  <ul>
+    {{#each courses}}
+      <li>{{this.title}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No courses available.</p>
+{{/if}}
+
+<h2>Create New Course:</h2>
+<form action='/courses/create' method='POST'>
+  <input type='text' name='title' placeholder='Title' required />
+  <input type='text' name='description' placeholder='Description' required />
+  <input type='text' name='instructor' placeholder='Instructor' required />
+  <input type='number' name='rating' placeholder='Rating' required />
+  <input
+    type='number'
+    name='lessons'
+    placeholder='Number of Lessons'
+    required
+  />
+  <button type='submit'>Create Course</button>
+</form>
+
+<h2>Update Course:</h2>
+{{#each courses}}
+  <form action='/courses/{{this._id}}/edit' method='POST'>
+    <input type='text' name='title' value='{{this.title}}' required />
+    <input
+      type='text'
+      name='description'
+      value='{{this.description}}'
+      required
+    />
+    <input type='text' name='instructor' value='{{this.instructor}}' required />
+    <input type='number' name='rating' value='{{this.rating}}' required />
+    <input type='number' name='lessons' value='{{this.lessons}}' required />
+    <button type='submit'>Update Course</button>
+  </form>
+{{/each}}
+
+<h2>Delete Course:</h2>
+{{#each courses}}
+  <form action='/courses' method='POST'>
+    <button type='submit'>Delete Course</button>
+  </form>
+{{/each}}

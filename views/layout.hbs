@@ -1,31 +1,115 @@
-<html lang='en'>
-
+{{!-- <html>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-    <title>{{appTitle}}</title>
+    <title>c-art platform</title>
+    <!-- Add your CSS and other stylesheets here -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-
   <body>
 
-    {{#if currentUser}}
-      <p>Welcome {{currentUser.username}}</p>
-    {{/if}}
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class='menu'>
+        <li><a href='/signup'>Signup</a></li>
+        <li><a href='/login'>Login</a></li>
+        <li><a href='/courses'>Courses</a></li>
+        <li><a href='/logout'>Logout</a></li>
+      </ul>
+    </nav>
 
-    <a href='/books'>All Books</a>
-    <a href='/books/create'>Create books</a>
-    <a href='/signup'>Signup</a>
-    <a href='/login'>Login</a>
+    <!-- Content Section -->
+    <div class='content'>
+      {{{body}}}
+      <!-- This is where the content from specific views will be injected -->
+    </div>
 
-    <form action='/logout' method='POST'>
-      <button type='submit'>Logout</button>
-    </form>
+    <!-- Course Types Section -->
+    <div class='course-types'>
+      <ul>
+        <li>
+          <a href='/courses/music'>Music</a>
+          <button><a href='/courses/music'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/film-video'>Film & Video</a>
+          <button><a href='/courses/film-video'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/visual-arts'>Visual Arts</a>
+          <button><a href='/courses/visual-arts'>View Courses</a></button>
+        </li>
+      </ul>
+    </div>
 
-    {{{body}}}
+    {{!--   {{> login}}
+    {{> courses}} --}}
+
+{{!  <footer>
+
+    </footer>
 
     <script src='/js/script.js'></script>
   </body>
+</html> }}
 
+<html>
+  <head>
+    <title>c-art-platform</title>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <nav>
+      <ul class='menu'>
+        {{#if currentUser}}
+
+          {{#if currentUser.isInstructor}}
+
+            <li><a href='/courses'>Courses</a></li>
+            <li><a href='/instructors/instructor-dashboard'>Dashboard</a></li>
+            <li><a href='/logout'>Logout</a></li>
+          {{else}}
+
+            <li><a href='/courses'>Courses</a></li>
+            <li><a href='/student/dashboard'>Dashboard</a></li>
+            <li><a href='/logout'>Logout</a></li>
+          {{/if}}
+        {{else}}
+
+          <li><a href='/signup'>Signup</a></li>
+          <li><a href='/login'>Login</a></li>
+          <li><a href='/courses'>Courses</a></li>
+          <a href='/courses/create'>Create courses</a>
+        {{/if}}
+      </ul>
+    </nav>
+
+    <div class='content'>
+      {{{body}}}
+
+    </div>
+
+    <div class='course-types'>
+      <ul>
+        <li>
+          <a href='/courses/music'>Music</a>
+          <button><a href='/courses'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/film-video'>Film & Video</a>
+          <button><a href='/courses/film-video'>View Courses</a></button>
+        </li>
+        <li>
+          <a href='/courses/visual-arts'>Visual Arts</a>
+          <button><a href='/courses/visual-arts'>View Courses</a></button>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <script src='/js/script.js'></script>
+  </body>
 </html>

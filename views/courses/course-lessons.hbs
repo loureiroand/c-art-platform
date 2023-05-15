@@ -1,0 +1,13 @@
+<h1>Course Lessons</h1>
+{{#if courses.lessons}}
+  <ul>
+    {{#each courses.lessons}}
+      <li>
+        <h3>{{this.lesson_number}} - {{this.lesson_title}}</h3>
+        <p>{{this.lesson_body}}</p>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No lessons available for this course.</p>
+{{/if}}

@@ -1,0 +1,63 @@
+<form action='/courses' method='POST'>
+  <div>
+    <label for='title'>Title:</label>
+    <input type='text' id='title' name='title' required />
+  </div>
+  <div>
+    <label for='description'>Description:</label>
+    <textarea id='description' name='description' required></textarea>
+  </div>
+  <div>
+    <label for='instructor'>Instructor:</label>
+    <input type='text' id='instructor' name='instructor' required />
+  </div>
+  <div>
+    <label for='rating'>Rating:</label>
+    <input type='number' id='rating' name='rating' min='1' max='5' required />
+  </div>
+  <div>
+    <label for='lessons'>Lessons:</label>
+    <button id='add-lesson' type='button'>Add Lesson</button>
+    <div id='lessons-container'>
+      <div class='lesson'>
+        <label for='lesson-number-0'>Lesson Number:</label>
+        <input
+          type='number'
+          id='lesson-number-0'
+          name='lessons[0][lesson_number]'
+          required
+        />
+        <label for='lesson-title-0'>Lesson Title:</label>
+        <input
+          type='text'
+          id='lesson-title-0'
+          name='lessons[0][lesson_title]'
+          required
+        />
+        <label for='lesson-body-0'>Lesson Body:</label>
+        <textarea
+          id='lesson-body-0'
+          name='lessons[0][lesson_body]'
+          required
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <button type='submit'>Create Course</button>
+</form>
+
+<script>
+  document.getElementById('add-lesson').addEventListener('click', function() {
+  const lessonsContainer = document.getElementById('lessons-container'); const
+  lessonIndex = lessonsContainer.children.length; const lessonDiv =
+  document.createElement('div'); lessonDiv.classList.add('lesson');
+  lessonDiv.innerHTML = ` <label for="lesson-number-${lessonIndex}">Lesson
+  Number:</label> <input type="number" id="lesson-number-${lessonIndex}"
+  name="lessons[${lessonIndex}][lesson_number]" required> <label
+  for="lesson-title-${lessonIndex}">Lesson Title:</label> <input type="text"
+  id="lesson-title-${lessonIndex}" name="lessons[${lessonIndex}][lesson_title]"
+  required> <label for="lesson-body-${lessonIndex}">Lesson Body:</label>
+  <textarea id="lesson-body-${lessonIndex}"
+  name="lessons[${lessonIndex}][lesson_body]" required></textarea> `;
+  lessonsContainer.appendChild(lessonDiv); });
+</script>
