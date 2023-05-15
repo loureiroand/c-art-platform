@@ -88,6 +88,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 router.get('/logout', async (req, res) => {
   // Clear the user's session
   req.session.destroy();
@@ -96,4 +97,6 @@ router.get('/logout', async (req, res) => {
   res.redirect('/login');
 });
 
+=======
+>>>>>>> 34106c9714490b319a0e077301c84ec551706a10
 module.exports = router;

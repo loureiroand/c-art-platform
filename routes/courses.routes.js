@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
+<<<<<<< HEAD
 const authMiddleware = require('../middleware/authMiddleware');
 const Course = require('../models/Course.model');
 const Instructor = require('../models/Instructor.model');
 
 // get courses
+=======
+const Course = require('../models/Course.model');
+
+>>>>>>> 34106c9714490b319a0e077301c84ec551706a10
 router.get('/courses', async (req, res, next) => {
   try {
     const courses = await Course.find();
@@ -14,6 +19,7 @@ router.get('/courses', async (req, res, next) => {
   }
 });
 
+<<<<<<< HEAD
 router.get(
   '/courses/create',
   authMiddleware.requireInstructor,
@@ -75,6 +81,13 @@ router.get('/courses/:id', async (req, res, next) => {
   try {
     const courseName = await Course.findById(req.params.id);
     res.render('courses/course-details', courseName);
+=======
+// Get course details
+router.get('/courses/:id/details', async (req, res, next) => {
+  try {
+    const courseName = await Course.findById(req.params.id);
+    res.render('courses/course-details', { course: courseName });
+>>>>>>> 34106c9714490b319a0e077301c84ec551706a10
   } catch (err) {
     next(err);
   }
@@ -90,6 +103,7 @@ router.get('/courses/:id/lessons', async (req, res, next) => {
   }
 });
 
+<<<<<<< HEAD
 router.get('/courses/:id/lessons/:lesson_id', async (req, res, next) => {
   try {
     const courses = await Course.findById(req.params.id);
@@ -97,11 +111,19 @@ router.get('/courses/:id/lessons/:lesson_id', async (req, res, next) => {
       lesson => lesson._id.toString() === req.params.lesson_id
     );
     res.render('courses/course-lesson', { courses: courses, lesson: lesson });
+=======
+// Get lesson
+router.get('/courses/:id/lesson_id', async (req, res, next) => {
+  try {
+    const courseLesson = await Course.findById(req.params.id);
+    res.render('courses/course-lesson', { courses: courseLesson });
+>>>>>>> 34106c9714490b319a0e077301c84ec551706a10
   } catch (err) {
     next(err);
   }
 });
 
+<<<<<<< HEAD
 router.post(
   '/courses/:id/edit',
   authMiddleware.requireInstructor,
@@ -142,5 +164,48 @@ router.post(
     res.redirect('/courses');
   }
 );
+=======
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const courses = await Course.find(3);
+//     res.render('courses/course-index', { courses });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// router.get('/:id/details', async (req, res, next) => {
+//   try {
+//     const courseName = await Course.findById(req.params.id);
+//     res.render('courses/course-details', { course: courseName });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// router.get('/:id/lessons', async (req, res, next) => {
+//   try {
+//     const courseName = await Course.findById(req.params.id);
+//     res.render('courses/course-lesson', { Course: courseName });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// router.get('/:id/lessons/:lessons_id', async (req, res, next) => {
+//   try {
+//     const courseName = await Course.findById(req.params.id);
+//     for (i = 0; i < courseName.lessons.length; i++) {
+//       if (courseName.lessons[i.lesson_number === req.params.lesson_id]) {
+//         lesson = courseName.lessons[i];
+//       }
+//     }
+
+//     res.render('courses/course-lesson', { Course: courseName, lesson });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+>>>>>>> 34106c9714490b319a0e077301c84ec551706a10
 
 module.exports = router;

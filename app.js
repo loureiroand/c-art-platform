@@ -12,9 +12,29 @@ const mongoStore = require('connect-mongo');
 
 const authMiddleware = require('./middleware/authMiddleware');
 
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const helpers = require('handlebars-helpers');
+const session = require('express-session');
+const mongoStore = require('connect-mongo');
+
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const helpers = require('handlebars-helpers');
+const session = require('express-session');
+const mongoStore = require('connect-mongo');
+
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require('express');
+const app = express();
+
+// ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
+require('./config')(app);
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -45,6 +65,36 @@ app.use(
     })
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+// indicates the specific field that has errors
+// expressValidator({
+//   errorFormatter: function (param, msg, value) {
+//     const namespace = param.split('.'),
+//       root = namespace.shift(),
+//       formParam = root;
+
+//     while (namespace.length) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param: formParam,
+//       msg: msg,
+//       value: value
+//     };
+//   }
+// });
+
+// Connect-Flash
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -102,6 +152,17 @@ app.locals.appTitle = 'c-art platform';
 const indexRoutes = require('./routes/index.routes');
 app.use('/', indexRoutes);
 
+// const usersRoutes = require('./routes/users.routes');
+// app.use('/', usersRoutes);
+
+const coursesRoutes = require('./routes/courses.routes');
+app.use('/', coursesRoutes);
+
+const userRoutes = require('./routes/user.routes');
+app.use('/', userRoutes);
+
+// const instructorRoutes = require('./routes/instructor.routes');
+// app.use('/', instructorRoutes);
 const coursesRoutes = require('./routes/courses.routes');
 app.use('/', coursesRoutes);
 
@@ -111,6 +172,8 @@ app.use('/', instructorRoutes);
 const studentRoutes = require('./routes/student.routes');
 app.use('/', studentRoutes);
 
+// const studentRoutes = require('./routes/student.routes');
+// app.use('/', studentRoutes);
 const userRoutes = require('./routes/user.routes');
 app.use('/', userRoutes);
 
