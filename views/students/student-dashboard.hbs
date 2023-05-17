@@ -1,17 +1,20 @@
-<h1>Welcome to the Student Dashboard</h1>
+<h1>Welcome, {{currentUser.username}}!</h1>
+<h2>Student Dashboard</h2>
 
+<h3>Enroll in Courses:</h3>
 <ul>
-  <li><a href='/courses'>Browse Courses</a></li>
-  <li><a href='/courses/enrolled'>Enrolled Courses</a></li>
-  <li><a href='/logout'>Logout</a></li>
+  {{#each coursesToEnroll}}
+    <li><a href='/courses/{{_id}}/enroll'>Enroll in {{title}}</a></li>
+  {{/each}}
 </ul>
 
-<div class='content'>
+<h3>Your Enrolled Courses:</h3>
+<ul>
+  {{#each enrolledCourses}}
+    <li><a href='/courses/{{_id}}'>{{title}}</a></li>
+  {{/each}}
+</ul>
 
-</div>
-
-<footer>
-
-</footer>
+<li><a href='/logout'>Logout</a></li>
 
 <script src='/js/script.js'></script>

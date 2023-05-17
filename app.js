@@ -12,29 +12,9 @@ const mongoStore = require('connect-mongo');
 
 const authMiddleware = require('./middleware/authMiddleware');
 
-const expressValidator = require('express-validator');
-const flash = require('connect-flash');
-const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
-const helpers = require('handlebars-helpers');
-const session = require('express-session');
-const mongoStore = require('connect-mongo');
-
-const expressValidator = require('express-validator');
-const flash = require('connect-flash');
-const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
-const helpers = require('handlebars-helpers');
-const session = require('express-session');
-const mongoStore = require('connect-mongo');
-
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require('express');
-const app = express();
-
-// ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
-require('./config')(app);
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -65,9 +45,6 @@ app.use(
     })
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Express Validator
 // indicates the specific field that has errors
@@ -158,22 +135,12 @@ app.use('/', indexRoutes);
 const coursesRoutes = require('./routes/courses.routes');
 app.use('/', coursesRoutes);
 
-const userRoutes = require('./routes/user.routes');
-app.use('/', userRoutes);
-
-// const instructorRoutes = require('./routes/instructor.routes');
-// app.use('/', instructorRoutes);
-const coursesRoutes = require('./routes/courses.routes');
-app.use('/', coursesRoutes);
-
 const instructorRoutes = require('./routes/instructor.routes');
 app.use('/', instructorRoutes);
 
 const studentRoutes = require('./routes/student.routes');
 app.use('/', studentRoutes);
 
-// const studentRoutes = require('./routes/student.routes');
-// app.use('/', studentRoutes);
 const userRoutes = require('./routes/user.routes');
 app.use('/', userRoutes);
 
