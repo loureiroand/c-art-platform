@@ -1,6 +1,7 @@
 <h1>Welcome, {{currentUser.username}}!</h1>
 <h2>Student Dashboard</h2>
 
+<<<<<<< HEAD
 {{! <h3>Enroll in Courses:</h3> }}
 {{!-- <ul>
   {{#each coursesToEnroll}}
@@ -9,10 +10,21 @@
 </ul> --}}
 
 {{!-- <h3>Your Enrolled Courses:</h3>
+=======
+<h3>Enroll in Courses:</h3>
+<ul>
+  {{#each coursesToEnroll}}
+    <li><a href='/courses/{{_id}}/enroll'>Enroll in {{title}}</a></li>
+  {{/each}}
+</ul>
+
+<h3>Your Enrolled Courses:</h3>
+>>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
 <ul>
   {{#each enrolledCourses}}
     <li><a href='/courses/{{_id}}'>{{title}}</a></li>
   {{/each}}
+<<<<<<< HEAD
 </ul> --}}
 
 <h2>Enrolled Courses</h2>
@@ -28,6 +40,10 @@
 
 <hr />
 
+=======
+</ul>
+
+>>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
 <li><a href='/logout'>Logout</a></li>
 
 <script src='/js/script.js'></script>

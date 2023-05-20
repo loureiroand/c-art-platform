@@ -103,6 +103,7 @@ router.post(
   }
 );
 
+<<<<<<< HEAD
 /* router.post(
   '/courses/:id',
   authMiddleware.requireInstructor,
@@ -152,6 +153,8 @@ router.post(
   }
 ); */
 
+=======
+>>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
 // Get lessons
 router.get('/courses/:id/lessons', async (req, res, next) => {
   try {
