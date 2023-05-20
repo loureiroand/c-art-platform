@@ -23,9 +23,3 @@ const instructorSchema = new Schema({
 const Instructor = model('Instructor', instructorSchema);
 
 module.exports = Instructor;
-
-const userInstructor = await userInstructor.findOne({ username });
-if (userInstructor !== null) {
-  res.render('auth/signup', { errorMessage: 'Username already exists' });
-  return;
-}

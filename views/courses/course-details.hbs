@@ -1,31 +1,27 @@
-<h2>{{Course.title}}</h2>
-<p>
-  <strong>Instructor: </strong>
-  {{course.instructor}}
-</p>
-<p>
-  {{course.description}}
-</p>
+<h1>Course Details</h1>
+<div>
+  <h2>{{title}}</h2>
+  <p>Description: {{description}}</p>
+  <p>Instructor: {{instructor}}</p>
+  <p>Rating: {{rating}}</p>
+  <p>Lessons: {{lessons}}</p>
+</div>
 
-{{!-- <h2>{{Course.title}}</h2>
-<p>
-	<strong>Instructor: </strong> {{Course.instructor}}
-</p>
-<p>
-	{{Course.description}}
-</p>
-<ul class="alt">
-	{{#each Course.lessons}}
-		<li>{{lesson_title}}</li>
-	{{/each}}
-</ul>
+{{#if currentUser.isStudent}}
+  <form action='/courses/{{_id}}/enroll' method='POST'>
+    <button type='submit'>Enroll in Course</button>
+  </form>
+{{/if}}
 
-{{#if user}}
-	<form id="classRegForm" method="post" action="/{{type}}s/classes/register">
-		<input type="hidden" name="student_id" value="{{User._id}}">
-		<input type="hidden" name="course_id" value="{{Course._id}}">
-		<input type="hidden" name="course_title" value="{{Course.title}}">
-		<input type="submit" course="button" value="Register For This Class">
-	</form>
-{{else}}
-	<p>You must be logged in to register for this class</p> --}}
+<a href='/courses/create'>Create courses</a>
+
+<form action='/courses/{{_id}}/delete'>
+  <button>Delete</button>
+</form>
+
+<a href='/courses/{{_id}}/edit'>Edit Course</a>
+
+<!-- Enrollment button -->
+<form action='/courses/{{_id}}/enroll' method='POST'>
+  <button type='submit'>Enroll</button>
+</form>

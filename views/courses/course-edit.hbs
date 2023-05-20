@@ -1,0 +1,129 @@
+{{!-- <h1>Edit Course</h1>
+
+<form action='/courses/{{course._id}}/edit' method='POST'>
+  <label for='title'>Title:</label>
+  <input type='text' id='title' name='title' value='{{title}}' required />
+
+  <label for='description'>Description:</label>
+  <textarea
+    id='description'
+    name='description'
+    required
+  >{{course.description}}</textarea>
+
+  <label for='instructor'>Instructor:</label>
+  <input
+    type='text'
+    id='instructor'
+    name='instructor'
+    value='{{course.instructor}}'
+    required
+  />
+
+  <label for='rating'>Rating:</label>
+  <input type='number' id='rating' name='rating' value='{{course.rating}}' required />
+
+  <label for='lessons'>Number of Lessons:</label>
+  <input
+    type='number'
+    id='lessons'
+    name='lessons'
+    value='{{course.lessons}}'
+    required
+  />
+
+  <button type='submit'>Update Course</button>
+</form> --}}
+
+{{!-- <h1>Edit Course</h1>
+
+<form action='/courses/{{course._id}}/edit' method='POST'>
+  <label for='title'>Title:</label>
+  <input
+    type='text'
+    id='title'
+    name='title'
+    value='{{course.title}}'
+    required
+  />
+
+  <label for='description'>Description:</label>
+  <textarea
+    id='description'
+    name='description'
+    required
+  >{{course.description}}</textarea>
+
+  <label for='instructor'>Instructor:</label>
+  <input
+    type='text'
+    id='instructor'
+    name='instructor'
+    value='{{course.instructor}}'
+    required
+  />
+
+  <label for='rating'>Rating:</label>
+  <input
+    type='number'
+    id='rating'
+    name='rating'
+    value='{{course.rating}}'
+    required
+  />
+
+  <label for='lessons'>Number of Lessons:</label>
+  <input
+    type='number'
+    id='lessons'
+    name='lessons'
+    value='{{course.lessons}}'
+    required
+  />
+
+  <button type='submit'>Update Course</button>
+</form> --}}
+
+<h1>Edit Course</h1>
+
+<form action='/courses/{{_id}}' method='POST'>
+
+  <div>
+    <label for='title'>Title:</label>
+    <input type='text' id='title' name='title' value='{{title}}' />
+  </div>
+
+  <div>
+    <label for='description'>Description:</label>
+    <textarea id='description' name='description'>{{description}}</textarea>
+  </div>
+
+  <div>
+    <label for='instructor'>Instructor:</label>
+    <input
+      type='text'
+      id='instructor'
+      name='instructor'
+      value='{{instructor}}'
+    />
+  </div>
+
+  <div>
+    <label for='rating'>Rating:</label>
+    <input
+      type='number'
+      id='rating'
+      name='rating'
+      min='1'
+      max='5'
+      value='{{rating}}'
+    />
+  </div>
+
+  <div>
+    <label for='lessons'>Lessons:</label>
+    <input type='text' id='lessons' name='lessons' value='{{course.lessons}}' />
+  </div>
+
+  <button type='submit'>Save</button>
+</form>

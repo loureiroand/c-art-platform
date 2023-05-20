@@ -12,7 +12,8 @@ const userSchema = new Schema({
     isInstructor: {
       type: Boolean
     }
-  }
+  },
+  enrolledCourses: [{ type: Schema.Types.ObjectId, ref: 'Course' }] // Reference to the Course model
 });
 
 const User = model('User', userSchema);
