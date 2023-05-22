@@ -102,10 +102,14 @@ app.use((req, res, next) => {
   next();
 });
 
-//custom middleware to get the current logged user
 function getCurrentLoggedUser(req, res, next) {
   if (req.session && req.session.currentUser) {
-    res.locals.currentUser = req.session.currentUser;
+    const currentUser = req.session.currentUser;
+    res.locals.currentUser = {
+      ...currentUser,
+      isStudent: currentUser.role === 'student',
+      isInstructor: currentUser.role === 'instructor'
+    };
   } else {
     res.locals.currentUser = '';
   }
@@ -113,8 +117,22 @@ function getCurrentLoggedUser(req, res, next) {
   next();
 }
 
-// use the middleware
+// Use the middleware
 app.use(getCurrentLoggedUser);
+
+// //custom middleware to get the current logged user
+// function getCurrentLoggedUser(req, res, next) {
+//   if (req.session && req.session.currentUser) {
+//     res.locals.currentUser = req.session.currentUser;
+//   } else {
+//     res.locals.currentUser = '';
+//   }
+//   req.session.save(); // Save changes to the session
+//   next();
+// }
+
+// // use the middleware
+// app.use(getCurrentLoggedUser);
 
 /* app.use(authMiddleware.requireInstructor);
 app.use(authMiddleware.requireStudent); */

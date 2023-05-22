@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const Course = require('../models/Course.model');
+const fileUpload = require('../config/cloudinary');
 
 // get courses
 router.get('/courses', async (req, res, next) => {
@@ -30,15 +31,19 @@ router.get(
 router.post(
   '/courses',
   authMiddleware.requireInstructor,
+  fileUpload.single('image'),
   async (req, res, next) => {
+    let fileUrlOnCloudinary = '';
+    if (req.file) {
+      fileUrlOnCloudinary = req.file.path;
+    }
     try {
-      const { title, description, instructor, rating, lessons } = req.body;
+      const { title, description, instructor } = req.body;
       await Course.create({
         title,
         description,
         instructor,
-        rating,
-        lessons
+        imageUrl: fileUrlOnCloudinary
       });
       res.redirect('courses');
     } catch (error) {
@@ -76,8 +81,13 @@ router.get(
 router.post(
   '/courses/:id',
   authMiddleware.requireInstructor,
+  fileUpload.single('image'),
   async (req, res, next) => {
-    const { title, description, instructor, rating, lessons } = req.body;
+    let fileUrlOnCloudinary = '';
+    if (req.file) {
+      fileUrlOnCloudinary = req.file.path;
+    }
+    const { title, description } = req.body;
     try {
       // Find the course by ID and update it
       const course = await Course.findByIdAndUpdate(
@@ -85,10 +95,9 @@ router.post(
         {
           title,
           description,
-          instructor,
-          rating,
-          lessons
+          imageUrl: fileUrlOnCloudinary
         },
+
         { new: true } // Return the updated document
       );
 
@@ -103,7 +112,6 @@ router.post(
   }
 );
 
-<<<<<<< HEAD
 /* router.post(
   '/courses/:id',
   authMiddleware.requireInstructor,
@@ -153,8 +161,6 @@ router.post(
   }
 ); */
 
-=======
->>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
 // Get lessons
 router.get('/courses/:id/lessons', async (req, res, next) => {
   try {

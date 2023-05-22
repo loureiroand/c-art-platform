@@ -5,14 +5,7 @@ const courseSchema = new Schema(
     title: String,
     description: String,
     instructor: String,
-    rating: Number,
-    lessons: [
-      {
-        lesson_number: Number,
-        lesson_title: String,
-        lesson_body: String
-      }
-    ]
+    imageUrl: String
   },
   {
     timestamps: true

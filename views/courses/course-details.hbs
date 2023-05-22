@@ -1,13 +1,60 @@
-<h1>Course Details</h1>
+<div class='container center-vertical'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <img src='{{imageUrl}}' class='img-fluid mt-4' alt='Course Image' />
+    </div>
+    <div class='col-md-6 mt-4'>
+      <h1>{{title}}</h1>
+      <p>{{description}}</p>
+      <p>Instructor: {{instructor}}</p>
+      {{!-- {{#if currentUser}}
+      {{#if currentUser.isStudent}} --}}
+      <form action='/courses/{{_id}}/enroll' method='POST'>
+        <button type='submit' class='btn btn-primary'>Enroll</button>
+      </form>
+      {{!-- {{else}} --}}
+      <a href='/courses/{{_id}}/edit' class='btn btn-primary'>Edit</a>
+      <a href='/courses/{{_id}}/delete' class='btn btn-danger'>Delete</a>
+      {{!-- {{/if}} --}}
+    </div>
+  </div>
+</div>
+
+{{!-- <h1>Course Details</h1>
+<div>
+  <img src='{{imageUrl}}' alt='Course Image' />
+  <h2>{{title}}</h2>
+  <p>Description: {{description}}</p>
+  <p>Instructor: {{instructor}}</p>
+
+</div>
+
+{{#if currentUser.isStudent}}
+  <form action='/courses/{{_id}}/enroll' method='POST'>
+    <button type='submit'>Enroll in Course</button>
+  </form>
+{{/if}}
+
+<a href='/courses/create'>Create courses</a>
+
+<form action='/courses/{{course._id}}/delete'>
+  <button>Delete</button>
+</form>
+
+<a href='/courses/{{_id}}/edit'>Edit Course</a>
+
+<!-- Enrollment button -->
+<form action='/courses/{{_id}}/enroll' method='POST'>
+  <button type='submit'>Enroll</button>
+</form> --}}
+
+{{!-- <h1>Course Details</h1>
 <div>
   <h2>{{title}}</h2>
   <p>Description: {{description}}</p>
   <p>Instructor: {{instructor}}</p>
   <p>Rating: {{rating}}</p>
-<<<<<<< HEAD
   <p>Lessons: {{lessons}}</p>
-=======
->>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
 </div>
 
 {{#if currentUser.isStudent}}
@@ -22,13 +69,9 @@
   <button>Delete</button>
 </form>
 
-<<<<<<< HEAD
 <a href='/courses/{{_id}}/edit'>Edit Course</a>
 
 <!-- Enrollment button -->
 <form action='/courses/{{_id}}/enroll' method='POST'>
   <button type='submit'>Enroll</button>
-</form>
-=======
-<a href='/courses/{{_id}}/edit'>Edit Course</a>
->>>>>>> 5ca14bfa3aa563bd089a6b1a887d7d6f14a39df6
+</form> --}}
