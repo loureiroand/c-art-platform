@@ -1,21 +1,28 @@
 <div class='container center-vertical'>
   <div class='row'>
     <div class='col-md-6'>
-      <img src='{{imageUrl}}' class='img-fluid mt-4' alt='Course Image' />
+      <img
+        src='{{course.imageUrl}}'
+        class='img-fluid mt-4'
+        alt='Course Image'
+      />
     </div>
     <div class='col-md-6 mt-4'>
-      <h1>{{title}}</h1>
-      <p>{{description}}</p>
-      <p>Instructor: {{instructor}}</p>
-      {{!-- {{#if currentUser}}
-      {{#if currentUser.isStudent}} --}}
-      <form action='/courses/{{_id}}/enroll' method='POST'>
-        <button type='submit' class='btn btn-primary'>Enroll</button>
-      </form>
-      {{!-- {{else}} --}}
-      <a href='/courses/{{_id}}/edit' class='btn btn-primary'>Edit</a>
-      <a href='/courses/{{_id}}/delete' class='btn btn-danger'>Delete</a>
-      {{!-- {{/if}} --}}
+      <h1>{{course.title}}</h1>
+      <p>{{course.description}}</p>
+      <p>Instructor: {{course.instructor}}</p>
+      {{!-- <h1>{{currentUser.accountType.isStudent}}</h1> --}}
+      {{#if currentUser.accountType.isStudent}}
+        <form action='/courses/{{course._id}}/enroll' method='POST'>
+          <button type='submit' class='btn btn-primary'>Enroll</button>
+        </form>
+      {{else}}
+        <a href='/courses/{{course._id}}/edit' class='btn btn-primary'>Edit</a>
+        <a
+          href='/courses/{{course._id}}/delete'
+          class='btn btn-danger'
+        >Delete</a>
+      {{/if}}
     </div>
   </div>
 </div>

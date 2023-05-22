@@ -45,6 +45,7 @@ router.post(
         instructor,
         imageUrl: fileUrlOnCloudinary
       });
+      req.flash('success', 'You have successfully enrolled in the course.');
       res.redirect('courses');
     } catch (error) {
       next(error);
@@ -57,7 +58,11 @@ router.post(
 router.get('/courses/:id', async (req, res, next) => {
   try {
     const course = await Course.findById(req.params.id);
-    res.render('courses/course-details', course);
+    console.log(req.session.currentUser);
+    res.render('courses/course-details', {
+      course,
+      currentUser: req.session.currentUser
+    });
   } catch (err) {
     next(err);
   }
@@ -111,77 +116,6 @@ router.post(
     }
   }
 );
-
-/* router.post(
-  '/courses/:id',
-  authMiddleware.requireInstructor,
-  async (req, res, next) => {
-    const { title, description, instructor, rating, lessons } = req.body;
-    try {
-      // Find the course by ID
-      const course = await Course.findByIdAndUpdate(req.params.id);
-      if (!course) {
-        return res.status(404).render('error', { error: 'Course not found' });
-      }
-
-      /*   course.description = description; if (!course.instructor?.equals(instructor)) {
-        return res.status(403).render('error', { error: 'Forbidden' });
-      } */
-/*  course.title = title;
-      course.description = description;
-      course.instructor = instructor;
-      course.rating = rating;
-      course.lessons = lessons;
-
-      res.redirect('/courses');
-    } catch (error) {
-      next(error);
-    }
-  }
-);  */
-
-/* router.post(
-  '/courses/:id',
-  authMiddleware.requireInstructor,
-  async (req, res, next) => {
-    try {
-      const { title, description, instructor, rating, lessons } = req.body;
-      await Course.findByIdAndUpdate(req.query.id, {
-        title,
-        description,
-        instructor,
-        $ 
-        rating,
-        lessons
-      });
-      res.redirect(`/courses/${req.query.id}`);
-    } catch (err) {
-      next(err);
-    }
-  }
-); */
-
-// Get lessons
-router.get('/courses/:id/lessons', async (req, res, next) => {
-  try {
-    const coursesLessons = await Course.findById(req.params.id);
-    res.render('courses/course-lessons', { coursesLessons });
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get('/courses/:id/lessons/:lesson_id', async (req, res, next) => {
-  try {
-    const courses = await Course.findById(req.params.id);
-    const lesson = Course.lessons.find(
-      lesson => lesson._id.toString() === req.params.lesson_id
-    );
-    res.render('courses/course-lesson', { courses: courses, lesson: lesson });
-  } catch (err) {
-    next(err);
-  }
-});
 
 router.get(
   '/courses/:id/delete',

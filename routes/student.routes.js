@@ -4,19 +4,6 @@ const authMiddleware = require('../middleware/authMiddleware');
 const Course = require('../models/Course.model');
 const User = require('../models/User.model');
 
-// Student Dashboard
-/* router.get(
-  '/student/dashboard',
-  authMiddleware.requireStudent,
-  async (req, res, next) => {
-    try {
-      res.render('students/student-dashboard');
-    } catch (err) {
-      next(err);
-    }
-  }
-); */
-
 // Display enrolled courses
 router.get(
   '/student/dashboard',
@@ -33,7 +20,10 @@ router.get(
 
       const enrolledCourses = user.enrolledCourses;
 
-      res.render('students/student-dashboard', { enrolledCourses });
+      res.render('students/student-dashboard', {
+        enrolledCourses,
+        currentUser: user
+      });
     } catch (err) {
       next(err);
     }
@@ -60,13 +50,15 @@ router.post(
       }
 
       if (user.enrolledCourses.includes(courseId)) {
-        res.send("You're already enlisted in this course ");
+        req.send("You're already enlisted in this course ");
       }
 
       user.enrolledCourses.push(courseId);
       await user.save();
 
       console.log(user.enrolledCourses);
+
+      req.flash('success', 'You have successfully enrolled in the course.');
 
       res.redirect('/student/dashboard');
     } catch (err) {

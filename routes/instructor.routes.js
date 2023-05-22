@@ -3,7 +3,7 @@ const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const Course = require('../models/Course.model');
 
-// // Instructor Dashboard route
+// // Instructor Dashboard
 // router.get(
 //   '/instructor/dashboard',
 //   authMiddleware.requireInstructor,
