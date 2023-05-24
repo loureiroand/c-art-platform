@@ -8,7 +8,7 @@
       />
     </div>
     <div class='col-md-6 mt-4'>
-      <h1>{{course.title}}</h1>
+      <h1 class='course-details-title'>{{course.title}}</h1>
       <p>{{course.description}}</p>
       <p>Instructor: {{course.instructor}}</p>
       {{!-- <h1>{{currentUser.accountType.isStudent}}</h1> --}}
@@ -17,11 +17,13 @@
           <button type='submit' class='btn btn-primary'>Enroll</button>
         </form>
       {{else}}
-        <a href='/courses/{{course._id}}/edit' class='btn btn-primary'>Edit</a>
+        <a href='/courses/{{course._id}}/edit' class='btn btn-purple'>Edit</a>
         <a
           href='/courses/{{course._id}}/delete'
           class='btn btn-danger'
         >Delete</a>
+        <a class='btn btn-primary' href='/instructor/dashboard'>Back</a>
+
       {{/if}}
     </div>
   </div>

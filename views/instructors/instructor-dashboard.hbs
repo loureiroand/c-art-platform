@@ -1,71 +1,29 @@
-{{!-- <!-- instructor-dashboard -->
-
-<h1>Welcome, {{currentUser.username}}!</h1>
-<h1>Instructor Dashboard</h1>
-
-<ul>
-    {{#each courses}}
- 
-      <li>
-        <a href="/courses/{{_id}}">
-          {{title}}
-        </a>
-        <span>
-          <a href="/courses/{{_id}}/edit">Edit</a>
-          <a href="/courses/{{_id}}/delete">Delete</a>
-        </span>
-      </li>
-    {{/each}}
-
-
-<hr />
-
-
-
-    <li><a href="/courses/create">Create Course</a></li>
-  </ul>
-</div>
-
-<li><a href='/logout'>Logout</a></li> --}}
-
-{{!-- <div class='container'>
-  <h1>Welcome, {{currentUser.username}}!</h1>
-
-  <h2>My Courses</h2>
-
-  <div class='row'>
-    {{#each courses}}
-      <div class='col-md-4 mb-4'>
-        <div class='card'>
-          <img src='{{imageUrl}}' class='card-img-top' alt='Course Image' />
-          <div class='card-body'>
-            <h5 class='card-title'>{{title}}</h5>
-            <p class='card-text'>{{description}}</p>
-            <a href='/courses/{{_id}}' class='btn btn-primary'>View Details</a>
-          </div>
-        </div>
-      </div>
-    {{/each}}
-  </div>
-
-  <a href='/courses/create' class='btn btn-primary'>Create New Course</a>
-</div> --}}
-
 <div class='container mt-4'>
-  <h1>Welcome, {{currentUser.username}}!</h1>
+  <h2 class='dashboard'>Welcome to your dashboard,
+    {{currentUser.username}}!</h2>
 
-  <h2>My Courses</h2>
+  <div class='instructor-image'>
+    <img
+      src='https://res.cloudinary.com/dnyobqmgl/image/upload/v1684960573/visual-arts_05_xx4u9x.png'
+      class='img-fluid rounded'
+      alt='...'
+    />
+  </div>
 
   <div class='row mt-4'>
     {{#each instructorCourses}}
       <div class='col-md-4 mb-4'>
         <div class='card'>
-          <img src='{{imageUrl}}' class='card-img-top' alt='Course Image' />
+          <img
+            src='{{course.imageUrl}}'
+            class='card-img-top'
+            alt='Course Image'
+          />
           <div class='card-body'>
             <h5 class='card-title'>{{title}}</h5>
             <p class='card-text'>{{description}}</p>
             <p class='card-text'>{{instructor}}</p>
-            <a href='/courses/{{_id}}' class='btn btn-primary'>View Course</a>
+            <a href='/courses/{{_id}}' class='btn btn-purple'>View Course</a>
             <a href='/courses/{{_id}}/edit' class='btn btn-secondary'>Edit
               Course</a>
             <a href='/courses/{{_id}}/delete' class='btn btn-danger'>Delete
@@ -75,5 +33,5 @@
       </div>
     {{/each}}
   </div>
-  <a href='/courses/create' class='btn btn-primary'>Create New Course</a>
+  <a href='/courses/create' class='btn btn-purple mt-4'>Create New Course</a>
 </div>

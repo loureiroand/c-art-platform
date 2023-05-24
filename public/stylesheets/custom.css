@@ -87,6 +87,10 @@ p.text-white-75.mb-4 {
 
 /* Section Get Creative */
 
+h2.text-center.mt-0 {
+  font-weight: 700;
+}
+
 hr.divider-dark {
   background-color: #5940b0;
 }
@@ -99,7 +103,7 @@ h3.h4.mb-2 {
   font-weight: 600;
 }
 
-/* Forms */
+/* Auth Forms Section */
 .center-vertical {
   position: relative;
   top: 30%;
@@ -116,4 +120,64 @@ h3.h4.mb-2 {
 .btn-purple:hover {
   background-color: #5940b0;
   color: white;
+}
+
+.login {
+  font-weight: 700;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+.col-md-6.custom-label {
+  font-weight: 600;
+}
+
+.signup {
+  font-weight: 700;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+/* Courses Page */
+
+.courses-container h1 {
+  font-weight: 700;
+}
+
+.courses-container h5 {
+  font-weight: 600;
+}
+
+/* Courses Details Page */
+.course-details-title {
+  font-weight: 700;
+}
+
+.btn-danger {
+  margin-left: 2%;
+}
+
+/* Courses Create Page */
+.create {
+  font-weight: 700;
+  margin-top: 10%;
+}
+
+/* Courses Edit Page */
+.edit {
+  font-weight: 700;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+/* Instructor Dashboard*/
+.instructor-image img {
+  width: 640px;
+  height: 360px;
+  margin-top: 2%;
+}
+
+.dashboard {
+  font-weight: 700;
+  margin-top: 6%;
 }
