@@ -1,6 +1,10 @@
 
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang='en'>
     <title>c-art-platform</title>
     
 
@@ -8,15 +12,15 @@
       rel='stylesheet'
       href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css'
     />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/custom.css">
   </head>
   <body>
 
-    <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+    <nav class='navbar navbar-expand-lg navbar-light bg-white'>
       <div class='container-fluid'>
         <ul class='navbar-nav'>
-          {{#if currentUser}}
-            {{#if currentUser.isInstructor}}
+
             <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -25,55 +29,45 @@
     </a>
   </div>
 </nav>
+
  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+                  {{#if currentUser}}
+            {{#if currentUser.accountType.isInstructor}}
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/courses">Courses</a>
-        {{!-- <a class="nav-link" href="/logout">Logout</a> --}}
-             </div>
-             </div>
+        <a class="nav-link" href="/logout">Logout</a>
+             {{!-- </div>
+             </div> --}}
             {{else}}
-                     <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img src="https://res.cloudinary.com/dnyobqmgl/image/upload/v1684608464/c-art-logo_edruia.png" alt="Logo" width="114" height="34" class="d-inline-block align-text-top">
 
-    </a>
-  </div>
-</nav>
  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/courses">Courses</a>
         <a class="nav-link" href="/logout">Logout</a>
-             </div>
-             </div>
+             {{!-- </div>
+             </div> --}}
             {{/if}}
           {{else}}
 
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img src="https://res.cloudinary.com/dnyobqmgl/image/upload/v1684608464/c-art-logo_edruia.png" alt="Logo" width="114" height="34" class="d-inline-block align-text-top">
 
-    </a>
-  </div>
-</nav>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/courses">Courses</a>
+        <div class="navbar-nav ml-auto">
         <a class="nav-link" href="/signup">Signup</a>
         <a class="nav-link" href="/login">Login</a>
+        </div>
+        {{/if}}
       </div>
     </div>
   </div>
 </nav>
 
-          {{/if}}
-       
-    </nav>
-    
+          
+      
 
       {{{body}}}
 

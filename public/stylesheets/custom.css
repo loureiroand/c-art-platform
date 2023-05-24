@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+}
+
+/*Nav links*/
+.collapse.navbar-collapse {
+  font-weight: 600;
+}
+
+/* Change the color of the navbar links */
+.navbar-nav.nav-link {
+  color: black;
+  transition: color 0.3s; /* Add a transition effect for smooth color change */
+}
+
+/* Apply the hover effect to the text */
+.navbar-nav.nav-link:hover {
+  color: #5940b0;
+}
+
+h1.text-center.text-white.display-4 {
+  font-weight: 600;
+}
+
+h3.text-center.text-white {
+  font-weight: 400;
+}
+
+h2.text-center.mt-4.mb-4 {
+  font-weight: 700;
+}
+
+h4.text-center.mt-3 {
+  font-weight: 600;
+}
+
+p.text-center.mt-2 {
+  font-weight: 400;
+}
+
+.courses-container {
+  margin-top: 30px;
+}
+
+.course-card {
+  margin-bottom: 30px;
+}
+
+/* Section Creative Experts */
+
+.page-section {
+  padding: 8rem 0;
+}
+
+.btn-xl {
+  padding: 1.25rem 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
+}
+
+hr.divider {
+  height: 0.2rem;
+  max-width: 3.25rem;
+  margin: 1.5rem auto;
+  opacity: 1;
+}
+
+hr.divider-light {
+  background-color: #fff;
+}
+
+.bg-primary {
+  background-color: #5940b0 !important;
+}
+
+p.text-white-75.mb-4 {
+  color: white;
+}
+
+/* Section Get Creative */
+
+hr.divider-dark {
+  background-color: #5940b0;
+}
+
+.text-custom {
+  color: #5940b0;
+}
+
+h3.h4.mb-2 {
+  font-weight: 600;
+}
+
+/* Forms */
+.center-vertical {
+  position: relative;
+  top: 30%;
+  transform: translateY(-40%);
+}
+
+/* General buttons */
+
+.btn-purple {
+  background-color: #3e2897;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #5940b0;
+  color: white;
+}

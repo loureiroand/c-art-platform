@@ -104,7 +104,7 @@ router.get('/logout', async (req, res) => {
   req.session.destroy();
 
   // Redirect the user to the login page
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 module.exports = router;

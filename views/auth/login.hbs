@@ -1,43 +1,33 @@
-{{#if user}}
-  <h5>Welcome Back {{user.username}}</h5>
-  <ul class='nav nav-pills'>
-    <li class='nav-item'>
-      <a class='nav-link' href='/{{type}}s/courses'>My Courses</a>
-    </li>
-    <li class='nav-item'>
-      <a class='nav-link' href='/users/logout'>Logout</a>
-    </li>
-  </ul>
-{{else}}
-  <h4>Student & Instructor Login</h4>
-  <div class='container'>
-    <div class='row justify-content-center'>
-      <div class='col-lg-6'>
-        <form method='post' action='/login'>
-          <div class='form-group'>
-            <label for='username'>Username:</label>
-            <input
-              type='text'
-              class='form-control'
-              id='username'
-              name='username'
-            />
-          </div>
-          <div class='form-group'>
-            <label for='password'>Password:</label>
-            <input
-              type='password'
-              class='form-control'
-              id='password'
-              name='password'
-            />
-          </div>
-          <button type='submit' class='btn btn-primary'>Login</button>
-        </form>
-      </div>
+<div class='container mt-4'>
+  <div class='row justify-content-center'>
+    <div class='col-md-6'>
+      <h1 class='text-center'>Login</h1>
+      <form action='/login' method='POST'>
+        <div class='mb-3'>
+          <label for='username' class='form-label'>Username:</label>
+          <input
+            type='text'
+            class='form-control'
+            id='username'
+            name='username'
+            required
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='password' class='form-label'>Password:</label>
+          <input
+            type='password'
+            class='form-control'
+            id='password'
+            name='password'
+            required
+          />
+        </div>
+        <button type='submit' class='btn btn-purple'>Login</button>
+      </form>
     </div>
   </div>
-{{/if}}
+</div>
 
 {{!-- {{#if user}}
   <h5>Welcome Back {{user.username}}</h5>
@@ -50,22 +40,35 @@
     </li>
   </ul>
 {{else}}
-  <h4>Student & Instructor Login</h4>
-  <form method='post' action='/login'>
-    <!-- Updated form action -->
-    <div class='form-group'>
-      <label for='username'>Username:</label>
-      <input type='text' class='form-control' id='username' name='username' />
+  <div class='container mt-4 mb-4'>
+    <h1 class='text-center'>Student & Instructor Login</h1>
+    <div class='row justify-content-center mb-4'>
+
+      <div class='row justify-content-center'>
+        <div class='col-lg-6'>
+          <form method='post' action='/login'>
+            <div class='form-group'>
+              <label for='username'>Username:</label>
+              <input
+                type='text'
+                class='form-control'
+                id='username'
+                name='username'
+              />
+            </div>
+            <div class='form-group'>
+              <label for='password'>Password:</label>
+              <input
+                type='password'
+                class='form-control'
+                id='password'
+                name='password'
+              />
+            </div>
+            <button type='submit' class='btn btn-primary'>Login</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class='form-group'>
-      <label for='password'>Password:</label>
-      <input
-        type='password'
-        class='form-control'
-        id='password'
-        name='password'
-      />
-    </div>
-    <button type='submit' class='btn btn-primary'>Login</button>
-  </form>
+  </div>
 {{/if}} --}}
