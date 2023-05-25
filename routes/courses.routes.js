@@ -119,41 +119,6 @@ router.post(
   }
 );
 
-// Original
-// router.post(
-//   '/courses/:id',
-//   authMiddleware.requireInstructor,
-//   fileUpload.single('image'),
-//   async (req, res, next) => {
-//     let fileUrlOnCloudinary = '';
-//     if (req.file) {
-//       fileUrlOnCloudinary = req.file.path;
-//     }
-//     const { title, description } = req.body;
-//     try {
-//       // Find the course by ID and update it
-//       const course = await Course.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//           title,
-//           description,
-//           imageUrl: fileUrlOnCloudinary
-//         },
-
-//         { new: true } // Return the updated document
-//       );
-
-//       if (!course) {
-//         return res.status(404).render('error', { error: 'Course not found' });
-//       }
-
-//       res.redirect('/courses');
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
-
 router.get(
   '/courses/:id/delete',
   authMiddleware.requireInstructor,

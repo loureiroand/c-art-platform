@@ -46,25 +46,6 @@ app.use(
   })
 );
 
-// Express Validator
-// indicates the specific field that has errors
-// expressValidator({
-//   errorFormatter: function (param, msg, value) {
-//     const namespace = param.split('.'),
-//       root = namespace.shift(),
-//       formParam = root;
-
-//     while (namespace.length) {
-//       formParam += '[' + namespace.shift() + ']';
-//     }
-//     return {
-//       param: formParam,
-//       msg: msg,
-//       value: value
-//     };
-//   }
-// });
-
 // Connect-Flash
 app.use(flash());
 
@@ -75,27 +56,6 @@ app.use((req, res, next) => {
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Express Validator
-// indicates the specific field that has errors
-/* app.use(
-  expressValidator({
-    errorFormatter: function (param, msg, value) {
-      var namespace = param.split('.'),
-        root = namespace.shift(),
-        formParam = root;
-
-      while (namespace.length) {
-        formParam += '[' + namespace.shift() + ']';
-      }
-      return {
-        param: formParam,
-        msg: msg,
-        value: value
-      };
-    }
-  })
-); */
 
 app.use((req, res, next) => {
   res.locals.messages = require('express-messages')(req, res);
@@ -119,23 +79,6 @@ function getCurrentLoggedUser(req, res, next) {
 
 // Use the middleware
 app.use(getCurrentLoggedUser);
-
-// //custom middleware to get the current logged user
-// function getCurrentLoggedUser(req, res, next) {
-//   if (req.session && req.session.currentUser) {
-//     res.locals.currentUser = req.session.currentUser;
-//   } else {
-//     res.locals.currentUser = '';
-//   }
-//   req.session.save(); // Save changes to the session
-//   next();
-// }
-
-// // use the middleware
-// app.use(getCurrentLoggedUser);
-
-/* app.use(authMiddleware.requireInstructor);
-app.use(authMiddleware.requireStudent); */
 
 // default value for title local
 const capitalize = require('./utils/capitalize');

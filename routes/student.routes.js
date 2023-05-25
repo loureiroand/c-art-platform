@@ -31,6 +31,7 @@ router.get(
 );
 
 // Enroll in a course
+
 router.post(
   '/courses/:id/enroll',
   authMiddleware.requireStudent,
