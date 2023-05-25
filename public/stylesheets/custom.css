@@ -157,6 +157,14 @@ h3.h4.mb-2 {
   margin-left: 2%;
 }
 
+.col.delete-btn {
+  margin-left: -35%;
+}
+
+/* .btn.btn-purple.back {
+  margin-top: 12%;
+} */
+
 /* Courses Create Page */
 .create {
   font-weight: 700;
@@ -180,4 +188,19 @@ h3.h4.mb-2 {
 .dashboard {
   font-weight: 700;
   margin-top: 6%;
+}
+
+.my-custom-margin {
+  margin-top: 3%;
+  margin-bottom: -2%;
+  font-weight: 600;
+}
+
+.my-button-margin {
+  margin-top: 8%;
+}
+
+.alert.alert-danger {
+  font-weight: 700;
+  text-align: center;
 }

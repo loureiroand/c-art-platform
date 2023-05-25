@@ -14,15 +14,29 @@
       {{!-- <h1>{{currentUser.accountType.isStudent}}</h1> --}}
       {{#if currentUser.accountType.isStudent}}
         <form action='/courses/{{course._id}}/enroll' method='POST'>
-          <button type='submit' class='btn btn-primary'>Enroll</button>
+          <button type='submit' class='btn btn-purple'>Enroll</button>
         </form>
+
       {{else}}
-        <a href='/courses/{{course._id}}/edit' class='btn btn-purple'>Edit</a>
-        <a
-          href='/courses/{{course._id}}/delete'
-          class='btn btn-danger'
-        >Delete</a>
-        <a class='btn btn-primary' href='/instructor/dashboard'>Back</a>
+        <div class='row'>
+          <div class='col'>
+            <a
+              href='/courses/{{course._id}}/edit'
+              class='btn btn-purple'
+            >Edit</a>
+          </div>
+          <div class='col delete-btn'>
+            <a
+              href='/courses/{{course._id}}/delete'
+              class='btn btn-danger'
+            >Delete</a>
+          </div>
+
+          <div class='col'>
+            <a class='btn btn-purple back' href='/instructor/dashboard'>Back to
+              Dashboard</a>
+          </div>
+        </div>
 
       {{/if}}
     </div>

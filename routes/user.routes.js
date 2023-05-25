@@ -7,7 +7,7 @@ router.get('/signup', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-  const { username, email, password, accountType } = req.body;
+  const { username, name, email, password, accountType } = req.body;
 
   if (username === '' || email === '' || password === '') {
     res.render('auth/signup', { errorMessage: 'Fill in all fields' });
@@ -28,6 +28,7 @@ router.post('/signup', async (req, res) => {
   if (accountType === 'isStudent') {
     user = new User({
       username,
+      name,
       email,
       password: hashedPassword,
       accountType: {
@@ -38,6 +39,7 @@ router.post('/signup', async (req, res) => {
   } else if (accountType === 'isInstructor') {
     user = new User({
       username,
+      name,
       email,
       password: hashedPassword,
       accountType: {

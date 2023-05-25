@@ -2,13 +2,56 @@
   <h2 class='dashboard'>Welcome to your dashboard,
     {{currentUser.username}}!</h2>
 
-  <div class='instructor-image'>
+  <div class='instructor-image mb-4'>
     <img
       src='https://res.cloudinary.com/dnyobqmgl/image/upload/v1684960573/visual-arts_05_xx4u9x.png'
       class='img-fluid rounded'
       alt='...'
     />
   </div>
+
+  {{! <section class='page-section text-left'> }}
+  {{! <div class='container px-4 px-lg-5'> }}
+  <h4 class='my-custom-margin'>As a member of our instructional team, you can:</h4>
+  <div class='row gx-4 gx-lg-5'>
+    <div class='col-lg-3 col-md-6 text-center'>
+      <div class='mt-5 d-flex align-items-center'>
+        <div class='mb-2 me-3'><i
+            class='bi bi-x-diamond fs-1 text-custom'
+          ></i></div>
+        <h4 class='h4 mb-2 text-end'>Create Courses</h4>
+      </div>
+      <div class='d-flex justify-content-start mt-4'>
+        <!-- Added 'justify-content-start' class -->
+        <a href='/courses/create' class='btn btn-purple my-button-margin'>Create
+          New Course</a>
+      </div>
+    </div>
+    <div class='col-lg-3 col-md-6 text-center'>
+      <div class='mt-5 d-flex align-items-center'>
+        <div class='mb-2 me-3'><i
+            class='bi bi-pencil fs-1 text-custom'
+          ></i></div>
+        <h4 class='h4 mb-2'>Edit Courses
+        </h4>
+      </div>
+    </div>
+    <div class='col-lg-3 col-md-6 text-center'>
+      <div class='mt-5 d-flex align-items-center'>
+        <div class='mb-2 me-3'><i
+            class='bi bi-x-circle fs-1 text-custom'
+          ></i></div>
+        <h4 class='h4 mb-2'>Delete Courses</h4>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{{! </div> }}
+{{!--     
+  </section>
 
   <div class='row mt-4'>
     {{#each instructorCourses}}
@@ -33,5 +76,5 @@
       </div>
     {{/each}}
   </div>
-  <a href='/courses/create' class='btn btn-purple mt-4'>Create New Course</a>
-</div>
+  
+</div> --}}

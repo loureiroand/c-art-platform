@@ -50,15 +50,13 @@ router.post(
       }
 
       if (user.enrolledCourses.includes(courseId)) {
-        req.send("You're already enlisted in this course ");
+        res.send("You're already enlisted in this course ");
       }
 
       user.enrolledCourses.push(courseId);
       await user.save();
 
       console.log(user.enrolledCourses);
-
-      req.flash('success', 'You have successfully enrolled in the course.');
 
       res.redirect('/student/dashboard');
     } catch (err) {
