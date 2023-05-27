@@ -45,8 +45,8 @@ router.post(
         instructor,
         imageUrl: fileUrlOnCloudinary
       });
-      req.flash('success', 'You have successfully enrolled in the course.');
-      res.redirect('courses');
+
+      res.redirect('/courses');
     } catch (error) {
       next(error);
       console.log(error);
